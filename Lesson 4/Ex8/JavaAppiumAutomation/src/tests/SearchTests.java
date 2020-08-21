@@ -65,6 +65,17 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.checkNoArticlesPresentWithThisTitle("Object-oriented programming language");
         SearchPageObject.checkNoArticlesPresentWithThisTitle("Island of Indonesia");
     }
+    @Test
+    public void testCheckIfSomeArticlesFoundByTitleAndDescription()
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine("Java");
+        SearchPageObject.waitForElementByTitleAndDescription("Java","Island of Indonesia");
+        SearchPageObject.waitForElementByTitleAndDescription("Java (programming language)","Object-oriented programming language");
+        SearchPageObject.waitForElementByTitleAndDescription("JavaScript","Programming language");
+        SearchPageObject.waitForElementByTitleAndDescription("Java (software platform)","Set of several computer software products and specifications");
+    }
 
     @Test
     public void testCheckIfAllSearchResultsHaveRequiredText()
